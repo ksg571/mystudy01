@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="res">
+
+	<resultMap type="roomvo" id="roomRes">
+		<id property="rNo" column="rNo" javaType="int"/>
+		<result property="rName" column="rName"/>
+		<result property="rPrice" column="rPrice"/>
+		<result property="rImg" column="rImg"/>
+		<result property="startDate" column="startDate"/>
+		<result property="endDate" column="endDate"/>
+		<result property="rvPeople" column="rvPeople"/>
+		
+		<collection property="reservationVO" javaType="java.util.List" ofType="reservationvo">
+			<id property="rvNo" column="rvNo" javaType="int"/>
+			<result property="startDate" column="startDate"/>
+			<result property="endDate" column="endDate"/>
+			<result property="rvPeople" column="rvPeople"/>
+		</collection>
+	</resultMap>
+	
+	<select id="list_res" resultMap="roomRes" parameterType="int">
+		select rName, rPrice, rvPeople, rImg, to_char(startDate,'yy/mm/dd') startDate, to_char(endDate,'yy/mm/dd') endDate 
+		from reservation rv, room r 
+		where rv.rNo= r.rNo 
+		and rvNo =#{rvNo}
+	</select>
+</mapper>
