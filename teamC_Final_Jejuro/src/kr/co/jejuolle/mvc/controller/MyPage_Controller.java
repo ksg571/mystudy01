@@ -14,6 +14,7 @@ public class MyPage_Controller {
 	// pick 婦惜雖
 	@RequestMapping("/pickTourspot")
 	public String pickTourspot() {
+		System.out.println("梓ъ粽 纔蝶こ太太太太太太太");
 		return "mypage/pickTourspot";
 	}
 
