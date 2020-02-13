@@ -1,2 +1,2 @@
-# mystudy01
+# TeamC
 spring git test
